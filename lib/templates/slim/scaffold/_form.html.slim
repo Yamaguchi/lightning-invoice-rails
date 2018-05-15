@@ -1,10 +1,30 @@
 = simple_form_for(@<%= singular_table_name %>) do |f|
   = f.error_notification
+  = f.error :base
 
   .inputs
-  | <%- attributes.each do |attribute| -%>
-    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>
-  | <%- end -%>
+    <%- attributes.each do |attribute| -%>
+    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>, label: <%= class_name %>.human_attribute_name(:<%= attribute.name %>)
+    <%- end -%>
 
-  .actions
-    = f.button :submit
+  .actions.center
+    button type='submit' class='btn waves-effect waves-light'
+      = t('views.save')
+    - if @<%= singular_table_name %>.persisted?
+      a.btn.waves-effect.waves-light.red.modal-trigger href="#<%= model_resource_name %>_modal"
+        = t('views.delete')
+
+    = link_to t('views.cancel'), <%= index_helper %>_path, class: 'btn waves-effect waves-light'
+
+- if @<%= singular_table_name %>.persisted?
+  .modal#<%= model_resource_name %>_modal
+    .modal-content
+      h4 = t('views.confirm.title')
+      p = t('views.confirm.description', model: <%= class_name %>.model_name.human)
+    .modal-footer
+      .row
+        .col.s2
+          = link_to t('views.cancel'), '', class: 'btn modal-close waves-effect waves-green'
+        .col.s10
+          = link_to <%= model_resource_name %>_path(@<%= singular_table_name %>), method: :delete, class: 'btn modal-close waves-effect waves-light red'
+            = t('views.confirm.approval', model: '<%= model_resource_name %>')

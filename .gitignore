@@ -38,3 +38,6 @@ db/*.sqlite3
 /public/packs-test
 yarn-debug.log*
 .yarn-integrity
+
+spec/examples.txt
+

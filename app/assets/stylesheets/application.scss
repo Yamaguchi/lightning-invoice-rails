@@ -1,8 +1,8 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 @import "materialize/components/color-variables";
-$primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("yellow", "base") !default;
+$primary-color: color("blue-grey", "darken-4") !default;
+$secondary-color: color("indigo", "base") !default;
 @import 'materialize';
 
 @import "materialize/extras/nouislider";
@@ -10,4 +10,6 @@ $secondary-color: color("yellow", "base") !default;
 @import "devise";
 @import "custom";
 
-
+.translation_missing {
+  color: red !important;
+}

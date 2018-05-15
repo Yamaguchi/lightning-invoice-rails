@@ -84,7 +84,8 @@ gem 'slim-rails'
 gem 'high_voltage'
 
 # magic things
-gem 'devise'            
+gem 'devise'
+gem 'devise-i18n'
 gem 'show_for'
 gem 'simple_form'
 gem 'responders'
@@ -97,8 +98,23 @@ gem 'jquery-datatables', github: "mkhairi/jquery-datatables"
 # helpers
 gem 'inline_svg'
 
-# wsl ftw
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
-
 # misc
 gem 'htmlentities'
+
+# For bitcoin
+gem 'bitcoinrb'
+
+# Rubocop
+group :development do
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
+end
+
+# Rspec
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+end
+
+# Pagenation
+gem 'kaminari'

@@ -1,7 +1,7 @@
 $(document).on 'turbolinks:before-visit turbolinks:before-cache', ->
   elem = document.querySelector('#slide-out');
   instance = M.Sidenav.getInstance(elem) if elem
-  if instance 
+  if instance
     instance.close() if instance.isOpen #close on click
     instance.destroy()
 
@@ -11,7 +11,7 @@ $(document).on 'turbolinks:load', ->
 
 $(document).on 'turbolinks:load', ->
   Waves.displayEffect()
- 
+
   # Reset
   M.Modal._count = 0;
   M.ScrollSpy._count = 0;
@@ -47,7 +47,7 @@ $(document).on 'turbolinks:load', ->
   # Swipeable Tabs Demo Init
   if $('#tabs-swipe-demo').length
     $('#tabs-swipe-demo').tabs 'swipeable': true
-  
+
   # Chips
 
   # Handle removal of static chips.
@@ -81,6 +81,8 @@ $(document).on 'turbolinks:load', ->
     hoverEnabled: false
   $('.fixed-action-btn.toolbar').floatingActionButton toolbarEnabled: true
 
+  $("tr[data-link]").click ->
+    window.location = $(this).data("link")
 
   console.log "load init on ready or turbolinks:load"
 

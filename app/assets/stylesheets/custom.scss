@@ -1,3 +1,6 @@
+html, body, main {
+
+}
 body {
   display: flex;
   min-height: 100vh;
@@ -8,15 +11,30 @@ body {
 main {
   flex: 1 0 auto;
 }
+nav {
+  box-shadow: none;
+}
+.header {
+  position: relative;
+  height: auto;
+  .header-content {
+    position: relative;
+    h1 {
+      line-height: 2.0;
+      display: inline-block;
+    }
+  }
+  margin-bottom: 60px;
+}
 
 .main-logo {
   height: 3rem;
   margin-top: 0.5rem;
 }
-   
+
 .cover {
-  background-color: #fff;
-}  
+  background-color: $primary-color;
+}
 
 .icon-container .icon-preview span {
     text-align: left;

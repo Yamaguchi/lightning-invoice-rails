@@ -1,18 +1,17 @@
 - content_for :jumbotron do |content|
-  #index-banner.section.no-pad-bot.cover class="#{@color}"
+  #index-banner.section.no-pad-bot.cover
     .container
       br
       br
-      h1.header.center.white-text Materialize Rails Starter Boilerplate
-      .row.center.white-text 
-        h5.header.col.s12.light A modern responsive front-end framework based on Material Design
-        h6.header.col.s12.light Rails v5.2.0, materialize-sass v1.0.0.rc1
+      h1.header.center.white-text Token Platform
+      .row.center.white-text
+        h5.header.col.s12.light Token Platform based on Open Assets Protocol and Lightning Network
+        h6.header.col.s12.light Bitcoin 0.16.0 / Lightning Network 1.0
       .row.center
-        a#source-button.btn-large.waves-effect.waves-light.blue target="_blank" href="https://github.com/mkhairi/materialize-sass"  Gem
-        a#source-button.btn-large.waves-effect.waves-light.orange target="_blank" href="https://github.com/mkhairi/materialize-rails"  Source Code
+        = link_to t('views.sign_in'), new_user_session_url, class: 'btn-large waves-effect waves-light'
+        = link_to t('views.sign_up'), new_user_registration_url, class: 'btn-large waves-effect waves-light'
       br
       br
-
 
 .section
   /! Icon Section
@@ -21,17 +20,17 @@
       .icon-block
         h2.center.light-blue-text
           i.material-icons flash_on
-        h5.center Speeds up development 
-        p.light We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
+        h5.center Speeds up
+        p.light Capable of millions to billions of transactions per second across the network. Capacity blows away legacy payment rails by many orders of magnitude. Attaching payment per action/click is now possible without custodians.
     .col.s12.m4
       .icon-block
         h2.center.light-blue-text
           i.material-icons group
         h5.center User Experience Focused
-        p.light By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.
+        p.light process of enhancing user satisfaction with a product by improving the usability, accessibility, and pleasure provided in the interaction with the product. User experience design encompasses traditional human–computer interaction (HCI) design, and extends it by addressing all aspects of a product or service as perceived by users.
     .col.s12.m4
       .icon-block
         h2.center.light-blue-text
           i.material-icons settings
         h5.center Easy to work with
-        p.light We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.
+        p.light Platform for user-created assets on Bitcoin. It’s a protocol, set of specifications, and an API. Taken together, it allows users to create and trade assets on top of Bitcoin’s blockchain.

@@ -1,60 +1,29 @@
 doctype html
 html
   head
-    title Materialize
+    title = t('.name')
     meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /
     meta content="width=device-width, initial-scale=1, maximum-scale=1.0" name="viewport" /
-    meta content="/" name="turbolinks-root" 
+    meta content="/" name="turbolinks-root"
     //meta name="turbolinks-cache-control" content="no-cache"
     meta name="turbolinks-cache-control" content="no-preview"
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true
     = javascript_include_tag 'application', 'data-turbolinks-track': true
     = toast
-    - swatch = %w(lighten darken accent).sample
   body
-    header.navbar-fixed 
-      nav class="#{@color} darken-1"
-       .nav-wrapper.container
+    header.navbar
+      nav
+       .nav-wrapper
           a#sidenav href="#" data-target="slide-out" class="button-collapse sidenav-trigger show-on-large" data-turbolinks="false"
-            i class="material-icons right" apps
-          
-          a#logo-container.brand-logo href="/"  
-            = inline_svg "logo.svg", class: "main-logo"
+            i class="material-icons" apps
 
-          ul#nav-mobile.right
-            li: a href="/" Home
-            li
-              a href="/posts" 
-                span Posts
-                span.new.badge 4
-            li: a href="/components"  Components
-            li: a href="/javascript"  Javascript
-            li: a href="/forms"  Forms
-            /! Dropdown Trigger
-
-            - if user_signed_in?
-              li
-                a.dropdown-button data-target="dropdown1" href="#!" 
-                  span = current_user.email
-                  i.material-icons.right arrow_drop_down
-            - else
-              li = link_to (t :sign_in), new_user_session_url
-
-
-          - if user_signed_in?
-            ul#dropdown1.dropdown-content
-              li = link_to (t :profile), edit_user_registration_url
-              li.divider
-              li = link_to (t :sign_out), destroy_user_session_url, data: {method: :delete}
-
-          
     aside
      = render "layouts/sidebar"
 
     main
       = yield(:jumbotron) if content_for?(:jumbotron)
-      
+
       - if devise_controller?
         section#login
           .container-fluid.pt-3
@@ -62,10 +31,7 @@ html
               .col.s4.offset-s4
                 == yield
       - else
-        .container
-            == yield
-
-
+        == yield
 
     footer.page-footer class="#{@color}"
       = render "layouts/footer"

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module SimpleForm
   module Components
     module Icons
@@ -7,7 +8,7 @@ module SimpleForm
       end
 
       def icon_class
-        template.content_tag(:i, "", class: "material-icons prefix") do
+        template.content_tag(:i, '', class: 'material-icons prefix') do
           options[:icon]
         end
       end

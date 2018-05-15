@@ -1,20 +1,25 @@
+header.header.z-depth-2
+  .header-content
+    h1 = t('views.listing', model: <%= class_name %>.model_name.human)
+    = link_to new_<%= singular_route_name %>_path, class: 'btn-floating btn-large halfway-fab waves-effect waves-light'
+      i.large.material-icons add
+
 .row
   .col.s12
     .card.material-table
-      .table-header
-        h5 Listing <%= plural_table_name %>
-        .actions data-turbolinks="false"
-          a.search-toggle.waves-effect.btn-flat.nopadding href="#"
-            i.material-icons search
-
-      table#dttb.responsive.nowrap.table.table-hover data-sort="true" data-source="#{url_for(format: :json)}"
+      table
         thead
           tr
-    <% attributes.reject(&:password_digest?).each do |attribute| -%>
-        th data-data="<%= attribute.name %>" <%= attribute.human_name %>
-    <% end -%>
-        th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"
+            <% attributes.reject(&:password_digest?).each do |attribute| %>
+            th = <%= class_name %>.human_attribute_name(:<%= attribute.name %>)
+            <% end %>
+        tbody
+          - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+            tr data-link="#{<%= singular_route_name %>_path(<%= singular_table_name %>)}"
+              <% attributes.reject(&:password_digest?).each do |attribute| %>
+              td
+                = <%= singular_table_name %>.<%= attribute.name %>
+              <% end %>
 
-.fixed-action-btn
-  a#newpost.waves-effect.waves-light.btn.btn-floating.btn-large.cyan href="#{new_<%= singular_table_name %>_path}"
-    i.large.material-icons add
+  .col.s12
+    = paginate @<%= plural_table_name %>

@@ -1,0 +1,27 @@
+require: rubocop-rspec
+
+Rails:
+  Enabled: true
+AllCops:
+  TargetRubyVersion: 2.5.1
+  Exclude:
+    - vendor/bundle/**/*
+    - bin/*
+    - db/**/*
+    - lib/templates/**/*
+    - node_modules/**/*
+    - Gemfile
+Lambda:
+  Enabled: false
+Documentation:
+  Enabled: false
+LineLength:
+  Max: 120
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'config/initializers/simple_form_materialize.rb'
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false

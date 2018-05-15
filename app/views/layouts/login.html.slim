@@ -3,15 +3,14 @@ html
   head
     meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /
     meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport" /
-    meta content="/" name="turbolinks-root" 
+    meta content="/" name="turbolinks-root"
     meta name="turbolinks-cache-control" content="no-preview"
-    title Materialize
+    title = t('.name')
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true
     link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
     = javascript_include_tag 'application', 'data-turbolinks-track': true
     = csrf_meta_tags
-    - @color = %w(pink red purple deep-purple indigo blue light-blue cyan teal green light-green lime yellow amber orange deep-orange brown grey).sample
-    
+
     css:
       .brand-logo {
         display: flex;
@@ -19,14 +18,11 @@ html
         margin-bottom: 1rem;
       }
 
-  body class="#{@color}"
+  body class="cover"
     main style="padding-top: 4rem"
       section#login
         .container-fluid.pt-3
           .row
-            .col.s4.offset-s4
+            .col.s12.m6.offset-s0.offset-m3
               .brand-logo.mx-auto
-                = inline_svg "logo.svg", class: "main-logo"
-                i.material-icons.white-text close
-                = inline_svg "rails-logo.svg", class: "main-logo"
-              == yield
+              = yield
