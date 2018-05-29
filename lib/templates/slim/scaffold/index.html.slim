@@ -10,16 +10,10 @@ header.header.z-depth-2
       table
         thead
           tr
-            <% attributes.reject(&:password_digest?).each do |attribute| %>
-            th = <%= class_name %>.human_attribute_name(:<%= attribute.name %>)
-            <% end %>
+            <% attributes.reject(&:password_digest?).each do |attribute| %>th = t('.<%= attribute.name %>')<% end %>
         tbody
           - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
             tr data-link="#{<%= singular_route_name %>_path(<%= singular_table_name %>)}"
-              <% attributes.reject(&:password_digest?).each do |attribute| %>
-              td
-                = <%= singular_table_name %>.<%= attribute.name %>
-              <% end %>
-
+              <% attributes.reject(&:password_digest?).each do |attribute| %>td = <%= singular_table_name %>.<%= attribute.name %><% end %>
   .col.s12
     = paginate @<%= plural_table_name %>

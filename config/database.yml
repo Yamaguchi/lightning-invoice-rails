@@ -1,19 +1,20 @@
 default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  adapter: mysql2
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: materialize_apps_development
+  username: username
+  password: password
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: materialize_apps_test
+  username: username
+  password: password
 
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
   database: materialize_apps_production
   username: materialize_apps
   password: <%= ENV['MATERIALIZE_APPS_DATABASE_PASSWORD'] %>

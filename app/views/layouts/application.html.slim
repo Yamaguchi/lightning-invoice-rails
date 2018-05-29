@@ -14,12 +14,14 @@ html
   body
     header.navbar
       nav
-       .nav-wrapper
-          a#sidenav href="#" data-target="slide-out" class="button-collapse sidenav-trigger show-on-large" data-turbolinks="false"
-            i class="material-icons" apps
+        .nav-wrapper
+          - if user_signed_in?
+            a#sidenav href="#" data-target="slide-out" class="button-collapse sidenav-trigger show-on-large" data-turbolinks="false"
+              i class="material-icons" apps
 
     aside
-     = render "layouts/sidebar"
+      - if user_signed_in?
+        = render "layouts/sidebar"
 
     main
       = yield(:jumbotron) if content_for?(:jumbotron)

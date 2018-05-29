@@ -1,0 +1,16 @@
+.container
+  .user-view
+    br
+    br
+    br
+    = image_tag @user.avatar.url, class: "circle"
+    br
+    br
+    br
+    = simple_form_for(@user) do |f|
+      .inputs
+        = f.input :first_name, label: t('.first_name'), readonly: true
+        = f.input :last_name, label: t('.last_name'), readonly: true
+
+  .actions.center
+    = link_to t('views.edit'), edit_user_path(@user), class: 'btn waves-effect waves-light'

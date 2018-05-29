@@ -1,0 +1,19 @@
+.user-view
+  br
+  br
+  br
+  = image_tag @user.avatar.url, class: "circle"
+= simple_form_for(@user) do |f|
+  = f.input :avatar, as: :file, label: t('.avatar')
+  = f.input :remove_avatar, as: :boolean, label: t('.remove_avatar')
+  = f.error_notification
+  = f.error :base
+  .inputs
+    = f.input :first_name, label: t('.first_name')
+    = f.input :last_name, label: t('.last_name')
+
+  .actions.center
+    button type='submit' class='btn waves-effect waves-light'
+      = t('views.save')
+    = link_to t('views.cancel'), @user, class: 'btn waves-effect waves-light'
+

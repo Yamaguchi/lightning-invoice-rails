@@ -36,6 +36,10 @@ nav {
   background-color: $primary-color;
 }
 
+.user-view {
+  @extend .center;
+}
+
 .icon-container .icon-preview span {
     text-align: left;
     display: block;

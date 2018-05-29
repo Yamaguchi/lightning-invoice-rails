@@ -4,7 +4,7 @@
 
   .inputs
     <%- attributes.each do |attribute| -%>
-    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>, label: <%= class_name %>.human_attribute_name(:<%= attribute.name %>)
+    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>, label: t('.<%= attribute.name %>')
     <%- end -%>
 
   .actions.center

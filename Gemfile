@@ -67,15 +67,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # leave default rails gem alone
 
-group :development do
-  # Use sqlite as the database for Active Record
-  gem 'sqlite3'
-end
-
-group :production do
-  # Use postgresql as the database for Active Record
-  gem 'pg', '>= 0.18', '< 2.0'
-end
+gem 'mysql2'
 
 # templating engine
 gem 'slim-rails'
@@ -118,3 +110,7 @@ end
 
 # Pagenation
 gem 'kaminari'
+
+# Image Upload
+gem 'carrierwave'
+gem 'rmagick', require: 'RMagick'

@@ -1,6 +1,6 @@
 = show_for(@<%= singular_name %>) do |s|
 <%- attributes.each do |attribute| -%>
-  = s.<%= attribute.reference? ? :association : :attribute %> :<%= attribute.name %>, label: <%= attribute.human_name %>
+  = s.<%= attribute.reference? ? :association : :attribute %> :<%= attribute.name %>, label: t('.<%= attribute.name %>')
 <% end -%>
 
 .actions.center

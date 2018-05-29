@@ -195,12 +195,12 @@ SimpleForm.setup do |config|
 
     # Form Components
     b.wrapper tag: :div, class: 'btn' do |ba|
-      ba.use :tag, tag: :span, text: :label_text
+      ba.use :label_text
       ba.use :input
     end
     b.wrapper tag: :div, class: 'file-path-wrapper' do |ba|
-      ba.use :tag, tag: :input, class: 'file-path validate', type: 'text',
-                   placeholder: 'Browse...', error_class: 'invalid'
+      ba.use :input, class: 'file-path validate', type: 'text',
+             placeholder: 'Browse...', error_class: 'invalid',name:''
     end
     b.use :hint, wrap_with: { tag: 'span', class: 'help-text' }
   end
