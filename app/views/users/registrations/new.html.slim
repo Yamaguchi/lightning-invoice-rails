@@ -13,8 +13,9 @@
           = f.input :password, autocomplete: "off", required: true, icon: "lock", label_html: { data: { hint: "#{@minimum_password_length} Characters Minimum" } }
           = f.input :password_confirmation, autocomplete: "off", required: true, icon: "lock"
         .form-actions.center
-          = f.button :submit, "Sign Up"
+          button type='submit' class='btn waves-effect waves-light'
+            = "Sign Up"
       .card-action
         .devise-links
           = render "users/shared/links"
- 
+

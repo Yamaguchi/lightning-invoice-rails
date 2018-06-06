@@ -13,8 +13,9 @@
           = f.input :password, required: true, autocomplete: "off", icon: "lock", hint: false
           = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
         .form-actions.center
-          = f.button :submit, "Log In"
+          button type='submit' class='btn waves-effect waves-light'
+            = "Sign In"
       .card-action
         .devise-links
           = render "users/shared/links"
- 
+

@@ -16,7 +16,8 @@
             = f.input :password_confirmation,  autocomplete: "off"
             = f.input :current_password, autocomplete: "off", hint: "we need your current password to confirm your changes"
           .form-actions.center
-            = f.button :submit, "Update"
+            button type='submit' class='btn waves-effect waves-light'
+              = "Update"
         .card-action.center
           = render "users/shared/links"
-   
+

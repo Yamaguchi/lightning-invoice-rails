@@ -11,8 +11,9 @@
         .form-inputs.row
           = f.input :email, autofocus: true, required: true
         .form-actions.center
-          = f.button :submit, "Send Me Reset Instructions"
+          button type='submit' class='btn waves-effect waves-light'
+            = "Send Me Reset Instructions"
       .card-action
         .devise-links
           = render "users/shared/links"
- 
+

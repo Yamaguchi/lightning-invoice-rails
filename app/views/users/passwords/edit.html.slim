@@ -14,7 +14,8 @@
             = f.input :password, autofocus: true, required: true, autocomplete: false, hint: "#{@minimum_password_length} Characters Minimum"
             = f.input :password_confirmation, autofocus: true, required: true, autocomplete: false
           .form-actions.center
-            = f.button :submit, "Change my Password"
+            button type='submit' class='btn waves-effect waves-light'
+              = "Change my Password"
         .card-action
           .devise-links
             = render "users/shared/links"

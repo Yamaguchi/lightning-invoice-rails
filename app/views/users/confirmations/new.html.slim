@@ -12,7 +12,8 @@
         .form-inputs.row
           = f.input :email, autofocus: true, required: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
         .form-actions.center
-          = f.button :submit, "Resend Confirmation Instructions"
+          button type='submit' class='btn waves-effect waves-light'
+            = "Resend Confirmation Instructions"
       .card-action
         .devise-links
           = render "users/shared/links"
