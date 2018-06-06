@@ -1,6 +1,6 @@
-= show_for(@<%= singular_name %>) do |s|
+= simple_form_for(@<%= singular_name %>) do |f|
 <%- attributes.each do |attribute| -%>
-  = s.<%= attribute.reference? ? :association : :attribute %> :<%= attribute.name %>, label: t('.<%= attribute.name %>')
+  = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>, label: t('.<%= attribute.name %>'), readonly: true
 <% end -%>
 
 .actions.center
