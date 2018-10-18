@@ -109,3 +109,5 @@ end
 
 # Pagenation
 gem 'kaminari'
+
+gem 'lightning-invoice'
