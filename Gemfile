@@ -65,8 +65,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# leave default rails gem alone
-
 gem 'mysql2'
 
 # templating engine
@@ -76,8 +74,6 @@ gem 'slim-rails'
 gem 'high_voltage'
 
 # magic things
-gem 'devise'
-gem 'devise-i18n'
 gem 'show_for'
 gem 'simple_form'
 gem 'responders'
@@ -113,7 +109,3 @@ end
 
 # Pagenation
 gem 'kaminari'
-
-# Image Upload
-gem 'carrierwave'
-gem 'rmagick', require: 'RMagick'

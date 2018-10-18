@@ -11,10 +11,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_layout
-    if user_signed_in?
-      'application'
-    else
-      devise_controller? ? 'login' : 'application'
-    end
+    'application'
   end
 end

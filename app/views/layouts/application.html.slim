@@ -15,25 +15,13 @@ html
     header.navbar
       nav
         .nav-wrapper
-          - if user_signed_in?
-            a#sidenav href="#" data-target="slide-out" class="button-collapse sidenav-trigger show-on-large" data-turbolinks="false"
-              i class="material-icons" apps
-
-    aside
-      - if user_signed_in?
-        = render "layouts/sidebar"
-
+          .brand-logo.center = t('.name')
+          ul.left
+            li = link_to "Encode", new_encode_path
+            li = link_to "Decode", new_decode_path
     main
-      = yield(:jumbotron) if content_for?(:jumbotron)
-
-      - if devise_controller?
-        section#login
-          .container-fluid.pt-3
-            .row
-              .col.s4.offset-s4
-                == yield
-      - else
-        == yield
+      .container
+        = yield
 
     footer.page-footer class="#{@color}"
       = render "layouts/footer"
