@@ -10,21 +10,13 @@ body {
 
 main {
   flex: 1 0 auto;
-}
-nav {
-  box-shadow: none;
-}
-.header {
-  position: relative;
-  height: auto;
-  .header-content {
-    position: relative;
-    h1 {
-      line-height: 2.0;
-      display: inline-block;
-    }
+  .container {
+    margin-top: 56px;
   }
-  margin-bottom: 60px;
+}
+
+textarea {
+  height: auto;
 }
 
 .main-logo {
@@ -32,12 +24,11 @@ nav {
   margin-top: 0.5rem;
 }
 
+.brand-logo {
+  font-size: 14px;
+}
 .cover {
   background-color: $primary-color;
-}
-
-.user-view {
-  @extend .center;
 }
 
 .icon-container .icon-preview span {
@@ -61,12 +52,4 @@ nav {
 }
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
     background: #f5f2f0 none repeat scroll 0 0;
-}
-
-
-.toc {
-  position: sticky;
-  top: 4rem;
-  max-height: calc(100vh - 4rem);
-  overflow-y: auto;
 }

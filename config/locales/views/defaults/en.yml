@@ -18,7 +18,5 @@ en:
     sign_up: 'Sign Up'
   layouts:
     application:
-      name: 'Application'
-    login:
-      name: 'Application'
+      name: 'Lightning Invoice Encoder'
 

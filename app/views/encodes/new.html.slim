@@ -1,0 +1,26 @@
+= simple_form_for(@encode, as: :encode, url: encodes_url) do |f|
+  = f.error_notification
+  = f.error :base
+
+  .inputs.input-field
+    .row
+      = f.input :prefix, label: 'prefix'
+      = f.input :amount, label: 'amount'
+      = f.input :multiplier, label: 'multiplier'
+      = f.input :timestamp, label: 'timestamp'
+      = f.input :payment_hash, label: 'payment_hash'
+      = f.input :description, label: 'description'
+      = f.input :description_hash, label: 'description_hash'
+      = f.input :pubkey, label: 'pubkey'
+      = f.input :expiry, label: 'expiry'
+      = f.input :min_final_cltv_expiry, label: 'min_final_cltv_expiry'
+      = f.input :fallback_address, label: 'fallback_address'
+      = f.input :signature, label: 'signature'
+
+  .actions.center
+    button type='submit' class='btn waves-effect waves-light'
+      = 'Encode'
+  - if @encode.decoded
+    .input-field
+      = @encode.decoded.value
+

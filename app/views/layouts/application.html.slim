@@ -17,8 +17,12 @@ html
         .nav-wrapper
           .brand-logo.center = t('.name')
           ul.left
-            li = link_to "Encode", new_encode_path
-            li = link_to "Decode", new_decode_path
+            li = link_to 'Encode', new_encode_path
+            li = link_to 'Decode', new_decode_path
+          ul.right
+            li = link_to 'https://github.com/Yamaguchi/lightning-invoice-rails', class: "valign-wrapper", target: '_blank'
+              = image_tag 'GitHub-Mark-Light-32px.png', class: "circle"
+              = 'Download source code'
     main
       .container
         = yield

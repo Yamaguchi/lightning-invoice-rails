@@ -1,0 +1,29 @@
+= simple_form_for(@decode, as: :decode, url: decodes_url) do |f|
+  = f.error_notification
+  = f.error :base
+
+  .inputs
+    .input-field
+      = f.text_area :value, rows: 10
+
+  .actions.center
+    button type='submit' class='btn waves-effect waves-light'
+      = 'Decode'
+  - if @decode.encoded
+    .row
+      = simple_form_for(@decode.encoded, as: :encoded, url: decodes_url) do |s|
+        = s.input :prefix, label: 'prefix', readonly: true, input_html: {placeholder: '(None)'}
+        = s.input :amount, label: 'amount', readonly: true, input_html: {placeholder: '(None)'}
+        = s.input :multiplier, label: 'multiplier', readonly: true, input_html: {placeholder: '(None)'}
+        .col.s6
+          = s.input :timestamp, label: 'timestamp', readonly: true, input_html: {placeholder: '(None)'}
+        .col.s6
+          = s.input :timestamp_as_string, label: 'timestamp(formatted)', readonly: true, input_html: {placeholder: '(None)'}
+        = s.input :payment_hash, label: 'payment_hash', readonly: true, input_html: {placeholder: '(None)'}
+        = s.input :description, label: 'description', readonly: true, input_html: {placeholder: '(None)'}
+        = s.input :description_hash, label: 'description_hash', readonly: true, input_html: {placeholder: '(None)'}
+        = s.input :pubkey, label: 'pubkey', readonly: true, input_html: {placeholder: '(None)'}
+        = s.input :expiry, label: 'expiry', readonly: true, input_html: {placeholder: '(None)'}
+        = s.input :min_final_cltv_expiry, label: 'min_final_cltv_expiry', readonly: true, input_html: {placeholder: '(None)'}
+        = s.input :fallback_address, label: 'fallback_address', readonly: true, input_html: {placeholder: '(None)'}
+        = s.input :signature, label: 'signature', readonly: true, input_html: {placeholder: '(None)'}
