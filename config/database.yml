@@ -1,20 +1,16 @@
 default: &default
-  adapter: mysql2
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
 
 development:
   <<: *default
-  database: materialize_apps_development
-  username: username
-  password: password
+  database: db/development.sqlite3
 
 test:
   <<: *default
-  database: materialize_apps_test
-  username: username
-  password: password
+  database: db/test.sqlite3
 
 production:
   <<: *default
-  database: materialize_apps_production
-  username: materialize_apps
-  password: <%= ENV['MATERIALIZE_APPS_DATABASE_PASSWORD'] %>
+  database: db/production.sqlite3
