@@ -1,8 +1,10 @@
-## Installation
-master.key 8ecd7d7caba86c4df00cb686f1091cbe
+# Lightning Invoice Encoder/Decoder
 
-## Disclaimer
-Clone at your own risk
+This is encoder/decoder web application for the Lightning Network Invoice.
 
-## Contributing
-Any Pull requests are welcome to improve this example repo
+For detail about Lightning Invoice, see https://github.com/lightningnetwork/lightning-rfc/blob/master/11-payment-encoding.md
+
+## Install
+
+bundle install --path vendor/bundle
+bin/rails s
