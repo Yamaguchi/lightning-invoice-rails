@@ -39,4 +39,16 @@ class Form::Encode
     message.fallback_address = @fallback_address if @fallback_address
     @decoded = Form::Decode.new(value: message.to_bech32)
   end
+
+  def signature_r
+    signature[0...64]
+  end
+
+  def signature_s
+    signature[64...128]
+  end
+
+  def signature_flag
+    signature[128..-1]
+  end
 end

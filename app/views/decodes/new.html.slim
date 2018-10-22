@@ -11,19 +11,73 @@
       = 'Decode'
   - if @decode.encoded
     .row
-      = simple_form_for(@decode.encoded, as: :encoded, url: decodes_url) do |s|
-        = s.input :prefix, label: 'prefix', readonly: true, input_html: {placeholder: '(None)'}
-        = s.input :amount, label: 'amount', readonly: true, input_html: {placeholder: '(None)'}
-        = s.input :multiplier, label: 'multiplier', readonly: true, input_html: {placeholder: '(None)'}
-        .col.s6
-          = s.input :timestamp, label: 'timestamp', readonly: true, input_html: {placeholder: '(None)'}
-        .col.s6
-          = s.input :timestamp_as_string, label: 'timestamp(formatted)', readonly: true, input_html: {placeholder: '(None)'}
-        = s.input :payment_hash, label: 'payment_hash', readonly: true, input_html: {placeholder: '(None)'}
-        = s.input :description, label: 'description', readonly: true, input_html: {placeholder: '(None)'}
-        = s.input :description_hash, label: 'description_hash', readonly: true, input_html: {placeholder: '(None)'}
-        = s.input :pubkey, label: 'pubkey', readonly: true, input_html: {placeholder: '(None)'}
-        = s.input :expiry, label: 'expiry', readonly: true, input_html: {placeholder: '(None)'}
-        = s.input :min_final_cltv_expiry, label: 'min_final_cltv_expiry', readonly: true, input_html: {placeholder: '(None)'}
-        = s.input :fallback_address, label: 'fallback_address', readonly: true, input_html: {placeholder: '(None)'}
-        = s.input :signature, label: 'signature', readonly: true, input_html: {placeholder: '(None)'}
+      = simple_form_for(@decode.encoded, as: :encoded, url: decodes_url) do |g|
+        .col.s12
+          = g.label 'prefix'
+          = text_field_tag :amount, @decode.encoded.prefix, readonly: true, input_html: {placeholder: '(None)'}
+        .col.s12
+          = g.label 'amount'
+          = text_field_tag :amount, @decode.encoded.amount, readonly: true, input_html: {placeholder: '(None)'}
+        .col.s12
+          = g.label 'multiplier'
+          = text_field_tag :multiplier, @decode.encoded.multiplier, readonly: true
+        .row
+          .col.s6
+            = g.label 'timestamp'
+            = text_field_tag :timestamp, @decode.encoded.timestamp, readonly: true
+          .col.s6
+            = g.label 'timestamp(formatted)'
+            = text_field_tag :timestamp_as_string, @decode.encoded.timestamp_as_string, readonly: true
+        .col.s12
+          = g.label 'payment_hash'
+          = text_field_tag :payment_hash, @decode.encoded.payment_hash, readonly: true
+        .col.s12
+          = g.label 'description'
+          = text_field_tag :description, @decode.encoded.description, readonly: true
+        .col.s12
+          = g.label 'description_hash'
+          = text_field_tag :description_hash, @decode.encoded.description_hash, readonly: true
+        .col.s12
+          = g.label 'pubkey'
+          = text_field_tag :pubkey, @decode.encoded.pubkey, readonly: true
+        .col.s12
+          = g.label 'expiry'
+          = text_field_tag :expiry, @decode.encoded.expiry, readonly: true
+        .col.s12
+          = g.label 'min_final_cltv_expiry'
+          = text_field_tag :min_final_cltv_expiry, @decode.encoded.min_final_cltv_expiry, readonly: true
+        .col.s12
+          = g.label 'fallback_address'
+          = text_field_tag :fallback_address, @decode.encoded.fallback_address, readonly: true
+        .col.s12
+          = g.label 'signature'
+          = text_field_tag :signature, @decode.encoded.signature, readonly: true
+        .row
+          .col.s11.offset-s1
+            = g.label "signature(recovery r)"
+            = text_field_tag :signature_flag, @decode.encoded.signature_r, readonly: true
+          .col.s11.offset-s1
+            = g.label "signature(recovery s)"
+            = text_field_tag :signature_flag, @decode.encoded.signature_s, readonly: true
+          .col.s11.offset-s1
+            = g.label "signature(recovery flag)"
+            = text_field_tag :signature_flag, @decode.encoded.signature_flag, readonly: true
+        - @decode.encoded.routing_info.each.with_index do |r, i|
+          .col.s12
+            = g.label "routing - #{i}"
+          .row
+            .col.s11.offset-s1
+              = g.label 'pubkey'
+              = text_field_tag 'r[pubkey]', r['pubkey'], readonly: true
+            .col.s11.offset-s1
+              = g.label 'short_channel_id'
+              = text_field_tag 'r[short_channel_id]', r['short_channel_id'], readonly: true
+            .col.s11.offset-s1
+              = g.label 'fee_base_msat'
+              = text_field_tag 'r[fee_base_msat]', r['fee_base_msat'], readonly: true
+            .col.s11.offset-s1
+              = g.label 'fee_proportional_millionths'
+              = text_field_tag 'r[fee_proportional_millionths]', r['fee_proportional_millionths'], readonly: true
+            .col.s11.offset-s1
+              = g.label 'cltv_expiry_delta'
+              = text_field_tag 'r[cltv_expiry_delta]', r['cltv_expiry_delta'], readonly: true
