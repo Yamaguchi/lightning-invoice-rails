@@ -12,12 +12,6 @@ class Form::Encode
   validates :expiry, numericality: { only_integer: true, greater_than_or_equal: 0 }, allow_blank: true
   validates :min_final_cltv_expiry, numericality: { only_integer: true, greater_than_or_equal: 0 }, allow_blank: true
 
-  def initialize(attributes={})
-    super
-    @expiry ||= 3600
-    @min_final_cltv_expiry ||= 9
-  end
-
   def timestamp_as_string
     Time.at(@timestamp) if @timestamp
   end
@@ -41,14 +35,17 @@ class Form::Encode
   end
 
   def signature_r
+    return '' if signature.nil? || signature.empty?
     signature[0...64]
   end
 
   def signature_s
+    return '' if signature.nil? || signature.empty?
     signature[64...128]
   end
 
   def signature_flag
+    return '' if signature.nil? || signature.empty?
     signature[128..-1]
   end
 end

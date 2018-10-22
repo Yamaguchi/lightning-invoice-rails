@@ -4,7 +4,8 @@
 
   .inputs
     .input-field
-      = f.text_area :value, rows: 10
+      = f.label 'Lightning Invoice'
+      = f.text_area :value, rows: 15
 
   .actions.center
     button type='submit' class='btn waves-effect waves-light'
@@ -62,22 +63,23 @@
           .col.s11.offset-s1
             = g.label "signature(recovery flag)"
             = text_field_tag :signature_flag, @decode.encoded.signature_flag, readonly: true
-        - @decode.encoded.routing_info.each.with_index do |r, i|
-          .col.s12
-            = g.label "routing - #{i}"
-          .row
-            .col.s11.offset-s1
-              = g.label 'pubkey'
-              = text_field_tag 'r[pubkey]', r['pubkey'], readonly: true
-            .col.s11.offset-s1
-              = g.label 'short_channel_id'
-              = text_field_tag 'r[short_channel_id]', r['short_channel_id'], readonly: true
-            .col.s11.offset-s1
-              = g.label 'fee_base_msat'
-              = text_field_tag 'r[fee_base_msat]', r['fee_base_msat'], readonly: true
-            .col.s11.offset-s1
-              = g.label 'fee_proportional_millionths'
-              = text_field_tag 'r[fee_proportional_millionths]', r['fee_proportional_millionths'], readonly: true
-            .col.s11.offset-s1
-              = g.label 'cltv_expiry_delta'
-              = text_field_tag 'r[cltv_expiry_delta]', r['cltv_expiry_delta'], readonly: true
+        - if @decode.encoded.routing_info
+          - @decode.encoded.routing_info.each.with_index do |r, i|
+            .col.s12
+              = g.label "routing - #{i}"
+            .row
+              .col.s11.offset-s1
+                = g.label 'pubkey'
+                = text_field_tag 'r[pubkey]', r['pubkey'], readonly: true
+              .col.s11.offset-s1
+                = g.label 'short_channel_id'
+                = text_field_tag 'r[short_channel_id]', r['short_channel_id'], readonly: true
+              .col.s11.offset-s1
+                = g.label 'fee_base_msat'
+                = text_field_tag 'r[fee_base_msat]', r['fee_base_msat'], readonly: true
+              .col.s11.offset-s1
+                = g.label 'fee_proportional_millionths'
+                = text_field_tag 'r[fee_proportional_millionths]', r['fee_proportional_millionths'], readonly: true
+              .col.s11.offset-s1
+                = g.label 'cltv_expiry_delta'
+                = text_field_tag 'r[cltv_expiry_delta]', r['cltv_expiry_delta'], readonly: true
