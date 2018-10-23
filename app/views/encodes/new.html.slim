@@ -16,11 +16,17 @@
       = f.input :min_final_cltv_expiry, label: 'min_final_cltv_expiry'
       = f.input :fallback_address, label: 'fallback_address'
       = f.input :signature, label: 'signature'
-
+      = f.label 'Routing'
+      = link_to routing_info_encodes_path, remote: true, class: 'btn btn-small waves-effect waves-light'
+        span Add
+    #routing
+      - @encode.routing_info.each do |routing|
+        .row
+          = render 'routing_info', { routing: routing[0], index: routing[1] }
   .actions.center
     button type='submit' class='btn waves-effect waves-light'
       = 'Encode'
   - if @encode.decoded
     .input-field
-      = @encode.decoded.value
+      = text_area_tag :value, @encode.decoded.value, readonly: true, rows: 15
 

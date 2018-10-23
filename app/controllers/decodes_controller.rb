@@ -14,8 +14,9 @@ class DecodesController < ApplicationController
     @decode.decode
     render :new
   rescue => e
+    puts e.message
     puts e.backtrace
-    @decode.errors.add(:base, 'An error has occurred')
+    @decode.errors.add(:base, 'An error has occurred') if @decode
     render :new, notice: 'An error has occurred'
   end
 

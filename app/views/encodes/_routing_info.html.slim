@@ -1,0 +1,20 @@
+div
+  = label_tag "Routing - ##{index}", nil, class: 'routing_info'
+  button type='button' class='btn btn-small waves-effect waves-light red' onclick='$(this).parent().remove();'
+    span Remove
+  .row
+    .col.s11.offset-s1
+      = label_tag 'pubkey'
+      = text_field_tag "routing_info[][pubkey]", routing.pubkey
+    .col.s11.offset-s1
+      = label_tag 'short_channel_id'
+      = text_field_tag 'routing_info[][short_channel_id]', routing.short_channel_id
+    .col.s11.offset-s1
+      = label_tag 'fee_base_msat'
+      = text_field_tag 'routing_info[][fee_base_msat]', routing.fee_base_msat
+    .col.s11.offset-s1
+      = label_tag 'fee_proportional_millionths'
+      = text_field_tag 'routing_info[][fee_proportional_millionths]', routing.fee_proportional_millionths
+    .col.s11.offset-s1
+      = label_tag 'cltv_expiry_delta'
+      = text_field_tag 'routing_info[][cltv_expiry_delta]', routing.cltv_expiry_delta

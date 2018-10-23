@@ -6,17 +6,37 @@ class EncodesController < ApplicationController
   end
 
   def new
-    @encode = Form::Encode.new
+    @encode = Form::Encode.new({})
   end
 
   def create
     @encode = Form::Encode.new(encode_params)
+    params['routing_info'] && params['routing_info'].each do |routing_info|
+      @encode.routing_info << [Lightning::Invoice::RoutingInfo.new(
+        routing_info['pubkey'],
+        routing_info['short_channel_id'],
+        routing_info['fee_base_msat'],
+        routing_info['fee_proportional_millionths'],
+        routing_info['cltv_expiry_delta']
+      ), @encode.routing_info.size]
+    end
     @encode.encode
     render :new
   rescue => e
+    puts e.message
     puts e.backtrace
-    @encode.errors.add(:base, 'An error has occurred')
+    @encode.errors.add(:base, 'An error has occurred') if @encode
     render :new, notice: 'An error has occurred'
+  end
+
+  def routing_info
+    @routing = Lightning::Invoice::RoutingInfo.new(
+      "",
+      "",
+      0,
+      0,
+      0
+    )
   end
 
   def encode_params
