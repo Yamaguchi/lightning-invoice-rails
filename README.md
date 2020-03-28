@@ -10,5 +10,5 @@ https://lightning-invoice-rails.herokuapp.com/
 
 ## Install
 
-bundle install --path vendor/bundle
-bin/rails s
+    bundle install --path vendor/bundle
+    bin/rails s
